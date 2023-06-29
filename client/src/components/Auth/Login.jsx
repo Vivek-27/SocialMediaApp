@@ -21,7 +21,7 @@ const Login = () => {
     }
     setLoading(true);
     await axios
-      .post('http://localhost:8800/login', {
+      .post('/login', {
         email,
         password
       })
@@ -42,34 +42,28 @@ const Login = () => {
       });
   };
 
-  const Signup = () => {
+  const Signup = async () => {
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       alert('Invert email');
       return;
     }
 
     setLoading(true);
-
-    fetch('/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
+    await axios
+      .post('/signup', {
         name,
         email,
         username,
         password
       })
-    })
-      .then((res) => res.json())
       .then((data) => {
-        alert(data.message);
+        alert(data.data.message);
         setLoading(false);
-        window.location.reload();
+        // window.location.reload();
       })
       .catch((err) => {
-        console.log(err);
+        alert(err.response.data.error);
+        setLoading(false);
       });
   };
   return (
@@ -172,7 +166,6 @@ const Login = () => {
                 type="text"
                 value={email}
                 onChange={(e) => {
-                  console.log(e.target.value);
                   setEmail(e.target.value);
                 }}
                 placeholder="Mobile number or email address"
@@ -180,7 +173,6 @@ const Login = () => {
               <input
                 value={name}
                 onChange={(e) => {
-                  console.log(e.target.value);
                   setName(e.target.value);
                 }}
                 type="text"
@@ -189,7 +181,6 @@ const Login = () => {
               <input
                 value={username}
                 onChange={(e) => {
-                  console.log(e.target.value);
                   setUsername(e.target.value);
                 }}
                 type="text"
@@ -198,7 +189,6 @@ const Login = () => {
               <input
                 value={password}
                 onChange={(e) => {
-                  console.log(e.target.value);
                   setPassword(e.target.value);
                 }}
                 type="password"
