@@ -12,33 +12,37 @@ const Home = () => {
   const userLocal = localStorage.getItem('user');
   const user = JSON.parse(userLocal);
   const dispatch = useDispatch();
-  useEffect(() => {
-    const allPosts = async () => {
-      fetch('/all_posts', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          setPosts(data.posts);
-        })
-        .catch((err) => console.log(err));
-    };
-    allPosts();
 
-    const det = async () => {
-      try {
-        const response = await fetch(`/user/${user._id}`);
-        const res = await response.json();
-        localStorage.setItem('user', JSON.stringify(res.user));
-        dispatch({ type: 'UPDATE_USER', payload: res });
-      } catch (error) {
-        console.log(error);
+  const allPosts = async () => {
+    fetch('/all_posts', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json'
       }
-    };
-    det();
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setPosts(data.posts);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const det = async () => {
+    try {
+      const response = await fetch(`/user/${user._id}`);
+      const res = await response.json();
+      localStorage.setItem('user', JSON.stringify(res.user));
+      dispatch({ type: 'UPDATE_USER', payload: res });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
+      allPosts();
+      det();
+    }
   }, []);
 
   return (
