@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import './Login.css';
 import facebookIcon from './icons/facebook-svgrepo-com.svg';
 import { useNavigate } from 'react-router-dom';
@@ -13,40 +14,31 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
-  const Signin = () => {
+  const Signin = async () => {
     if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
       alert('Invert email');
       return;
     }
     setLoading(true);
-    fetch('/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: {
+    await axios
+      .post('http://localhost:8800/login', {
         email,
         password
-      }
-    })
-      .then((res) => {
-        console.log(res);
       })
-      .then((data) => {
-        console.log(data);
-        if (data.error) {
-          console.log(data.error);
-        } else {
-          localStorage.setItem('jwt', data.token);
-          localStorage.setItem('user', JSON.stringify(data.user));
-          dispatch({ type: 'LOGIN_USER', payload: data.user });
-          dispatch({ type: 'AUTHORIZATION', payload: true });
-          setLoading(false);
-          navigate('/');
-        }
+      .then((res) => {
+        localStorage.setItem('jwt', res.data.token);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        dispatch({ type: 'LOGIN_USER', payload: res.data.user });
+        dispatch({ type: 'AUTHORIZATION', payload: true });
+        setLoading(false);
+        navigate('/');
       })
       .catch((err) => {
         console.log(err);
+        if (err.response.data.error) {
+          alert(err.response.data.error);
+          setLoading(false);
+        }
       });
   };
 
