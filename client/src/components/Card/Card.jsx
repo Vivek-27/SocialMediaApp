@@ -55,8 +55,7 @@ const Card = (props) => {
             <input type="text " placeholder="Add a comment..." />
           </div>
           <div className="ico">
-            <p>❤️ 🙌</p>
-            <p className="add">+</p>
+            <p>❤️ 🙌 ⊕</p>
           </div>
         </div>
       </div>
