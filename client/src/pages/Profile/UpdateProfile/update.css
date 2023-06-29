@@ -1,0 +1,86 @@
+.UpdateProfile {
+  width: 100%;
+  height: 100vh;
+  background-color: rgb(255, 255, 255);
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  gap: 20px;
+  padding-top: 80px;
+}
+
+.top_text {
+  width: 350px;
+  text-align: start;
+}
+.UpdateProfile .edit_text {
+  color: rgb(0, 136, 255);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.UpdateProfile .edit_text:hover {
+  color: rgb(8, 140, 255);
+}
+
+.UpdateProfile .inputDiv {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0px;
+}
+
+.UpdateProfile .wrapper p {
+  border: none;
+  padding: 15px 0px;
+  width: 350px !important;
+  border-top: 1px solid rgba(128, 128, 128, 0.532);
+}
+
+.UpdateProfile .wrapper p a {
+  text-decoration: none;
+  color: rgb(0, 136, 255);
+  font-size: 17px;
+}
+
+.UpdateProfile .wrapper .inputDiv span {
+  color: rgb(123, 123, 123);
+  font-size: 14px;
+}
+
+.UpdateProfile .inputDiv input {
+  width: 350px;
+  outline: none;
+  padding: 10px 0px;
+  font-size: 16px;
+  border: none;
+  color: rgb(28, 28, 28);
+  border-bottom: 1px solid rgba(128, 128, 128, 0.638);
+}
+
+.UpdateProfile .loading {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.UpdateProfile .wrapper .wspan {
+  margin-top: 30px;
+  border-top: none;
+}
+
+.UpdateProfile .profile_img {
+  width: 120px;
+  cursor: pointer;
+  object-fit: cover;
+  height: 120px;
+  border-radius: 50%;
+  border: 1px solid rgba(128, 128, 128, 0.447);
+}
+
+.UpdateProfile .profile_img:hover {
+  opacity: 70%;
+}

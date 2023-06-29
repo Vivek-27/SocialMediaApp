@@ -1,0 +1,29 @@
+.Home {
+  position: static;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Home .nav {
+  display: flex;
+  margin: 10px;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.Home .nav .message img {
+  width: 30px;
+}
+
+.Home .nav .notification .icon {
+  color: rgb(26, 26, 26);
+  font-size: 32px;
+}
+.logo h1 {
+  font-family: Grand Hotel, cursive;
+  margin: 10px;
+}

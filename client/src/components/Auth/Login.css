@@ -1,0 +1,249 @@
+.Login {
+  width: 100%;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
+  padding-top: 12px;
+  background-color: rgb(251, 251, 251);
+  gap: 10px;
+}
+
+.Login .wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid rgba(207, 207, 207, 0.863);
+  border-radius: 1px;
+  width: 350px;
+  height: max-content;
+  padding-bottom: 20px;
+}
+
+.Login .wrapper h1 {
+  color: rgb(26, 26, 26);
+  width: max-content;
+  height: max-content;
+  padding: 30px;
+  font-size: 52px;
+  font-weight: 500;
+  font-family: 'Grand Hotel', cursive;
+}
+
+.Login .wrapper .or {
+  display: flex;
+  align-items: center;
+  width: 270px;
+  gap: 12px;
+  margin: 10px 0;
+}
+
+.Login .wrapper .or span {
+  font-size: 12px;
+  font-weight: 600;
+  color: rgba(124, 124, 124, 0.882);
+  /* padding: 0 10px; */
+}
+.Login .wrapper .or hr {
+  /* border: 0.5px solid rgb(202, 202, 202); */
+  opacity: 30%;
+  border: none;
+  border-bottom: 1px solid rgba(62, 62, 62, 0.499);
+  width: 50%;
+}
+
+.Login .wrapper .form {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  text-align: center;
+  gap: 6px;
+}
+
+.Login .wrapper .signup {
+  align-items: center;
+}
+
+.Login .wrapper .form .term {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 280px;
+  gap: 10px;
+  padding: 10px 0px;
+}
+
+.Login .wrapper .form .term span {
+  color: rgb(102, 102, 102);
+  font-weight: 100;
+}
+
+.Login .wrapper .form .term span a {
+  color: rgb(1, 7, 121);
+  text-decoration: none;
+}
+
+.Login .form input {
+  width: 250px;
+  padding: 10px 10px;
+  font-size: 12px;
+  border: 1px solid rgba(207, 207, 207, 0.863);
+  border-radius: 2px;
+  outline: none;
+  color: rgb(39, 39, 39);
+}
+
+.Login .form button {
+  border: none;
+  padding: 10px 0;
+  font-weight: 600;
+  color: rgb(237, 237, 237);
+  background-color: rgb(17, 140, 255);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.Login .form .btn_signup {
+  width: 270px;
+}
+
+.Login .form button:hover {
+  background-color: rgb(11, 111, 251);
+}
+
+.Login .form button:active {
+  background-color: rgb(17, 140, 255);
+}
+.Login .form .save_info {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 5px;
+}
+
+.Login .form .save_info input {
+  margin: 10px 0;
+  width: 18px;
+  height: 18px;
+}
+.Login .form .save_info span {
+  font-size: 13px;
+  font-weight: 100;
+  color: rgb(102, 102, 102);
+}
+
+.Login .facebook_login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 10px;
+}
+.Login .facebook_login span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  /* font-weight: 550; */
+  color: rgb(0, 49, 139);
+}
+.Login .facebook_login span img {
+  width: 15px;
+  border-radius: 2px;
+}
+
+.Login .facebook_login a {
+  font-size: 12px;
+  text-decoration: none;
+  color: rgb(0, 0, 66);
+}
+
+.Login .fblogin {
+  border: none;
+  padding: 10px 52px;
+  font-weight: 600;
+  color: rgb(237, 237, 237) !important;
+  background-color: rgb(17, 140, 255);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.Login .fblogin img {
+  filter: brightness(1000%);
+}
+
+.Login .fblogin:hover {
+  background-color: rgb(11, 111, 251);
+}
+.Login .fblogin:active {
+  background-color: rgb(17, 140, 255);
+}
+.Login .wrapper2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(207, 207, 207, 0.863);
+
+  border-radius: 1px;
+  width: 350px;
+  height: 60px;
+}
+
+.Login .wrapper2 .signup span {
+  font-size: 13px;
+  font-weight: 100;
+  color: rgb(62, 62, 62);
+  cursor: pointer;
+}
+
+.Login .wrapper2 .signup span a {
+  color: rgb(0, 115, 231);
+  font-weight: 600;
+}
+
+.Login .wrapperBtm {
+  width: 85%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 60px;
+}
+
+.Login .wrapperBtm p {
+  font-size: 12px;
+  text-align: center;
+  color: rgb(86, 86, 86);
+}
+
+.Login .wrapperBtm span {
+  font-size: 12px;
+  text-align: center;
+  word-spacing: 14px;
+  line-height: 22px;
+  color: rgb(110, 110, 110);
+  cursor: pointer;
+}
+
+.Login p {
+  font-size: 14px;
+  margin: 6px 0;
+}
+
+.wrapperapp {
+  margin-bottom: 50px;
+}
+.wrapperapp ._aa5q {
+  cursor: pointer;
+}
+.wrapperapp .play {
+  width: 130px;
+  margin-right: 4px;
+}
+.wrapperapp .microsoft {
+  width: 110px;
+  margin-left: 4px;
+}

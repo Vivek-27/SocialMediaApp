@@ -1,0 +1,123 @@
+.Upload {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  position: fixed;
+  top: 0;
+  background: rgba(0, 0, 0, 0.559);
+  z-index: 1000;
+}
+.Upload .container {
+  max-width: 100%;
+  padding: 20px;
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.Upload .container .wrapper {
+  max-width: 340px;
+  overflow: hidden;
+  height: 360px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+}
+
+.Upload .container .wrapper .top {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px 15px;
+  text-align: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.215);
+}
+
+.Upload .container .wrapper .top h3 {
+  flex: 2;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.Upload .container .wrapper .hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Upload .container .wrapper .hero img {
+  width: 100px;
+  height: 100px;
+  padding: 80px 120px;
+  padding-bottom: 10px;
+}
+
+.Upload .container .wrapper .hero button {
+  padding: 8px 22px;
+  font-size: 14px;
+  margin: 10px;
+  color: rgb(237, 237, 237);
+}
+
+.Upload .container .wrapper .hero2 img {
+  width: 100%;
+  height: 320px;
+  object-fit: cover;
+}
+
+.Upload .container .wrapper .top .next {
+  background-color: transparent;
+  color: rgb(0, 149, 246);
+}
+.material-symbols-outlined {
+  cursor: pointer;
+}
+
+.hero2 .left {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  gap: 10px;
+  margin: 5px 10px;
+}
+
+.hero2 .profile_img img {
+  width: 30px !important;
+  height: 30px !important;
+  border: 1px solid rgba(128, 128, 128, 0.159);
+  object-fit: cover;
+  /* border: 1px solid rgba(170, 170, 170, 0.412); */
+  border-radius: 50%;
+}
+
+.hero2 .left .profile_name span {
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+}
+
+.hero2 textarea {
+  border: none;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.252);
+  outline: none;
+  padding: 10px 15px;
+  font-size: 17px;
+  /* margin: 0px 5px; */
+}
+
+.add_location input {
+  width: 100%;
+  height: 30px;
+  border: none;
+  outline: none;
+  padding: 5px 15px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.252);
+}

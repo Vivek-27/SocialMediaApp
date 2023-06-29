@@ -1,0 +1,83 @@
+.Footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  border-top: 1px solid rgba(195, 195, 195, 0.412);
+  height: 50px;
+}
+
+.close {
+  width: 35px;
+  height: 35px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  z-index: 1001;
+  padding: 4px;
+  margin: 20px;
+  filter: drop-shadow(0.35rem 0.35rem 0.4rem rgb(0, 0, 0));
+}
+
+.close img {
+  filter: invert();
+  cursor: pointer;
+}
+
+.Footer .material-symbols-rounded {
+  font-size: 32px;
+  text-decoration: none;
+  padding: 3px;
+  border-radius: 5px;
+  color: rgb(20, 20, 20);
+  font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 200, 'opsz' 48;
+}
+
+.Footer .material-symbols-rounded:hover {
+  opacity: 85%;
+  background-color: rgba(0, 0, 0, 0.126);
+}
+
+.Footer .material-symbols-rounded:active {
+  /* opacity: 60%; */
+  scale: 90%;
+  background-color: rgba(0, 0, 0, 0.185);
+  font-variation-settings: 'FILL' 1, 'wght' 300, 'GRAD' 200, 'opsz' 48;
+}
+
+.Footer .up {
+  border: 3px solid black;
+  border-radius: 8px;
+}
+
+.Footer .active span {
+  font-variation-settings: 'FILL' 1;
+}
+
+.Footer .reels img {
+  width: 24px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.Footer .reels img:hover {
+  opacity: 85%;
+  background-color: rgba(0, 0, 0, 0.126);
+}
+
+.Footer .reels img:active {
+  scale: 90%;
+  background-color: rgba(0, 0, 0, 0.185);
+}
+
+.Footer .profile img {
+  width: 26px;
+  height: 26px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid rgba(128, 128, 128, 0.423);
+}
