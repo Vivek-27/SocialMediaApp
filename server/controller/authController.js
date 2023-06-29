@@ -12,25 +12,25 @@ const SignUp = async (req, res) => {
   User.findOne({ email: email }).then((savedUser) => {
     if (savedUser) {
       return res.status(422).json({ error: 'User already exist please login' });
-    }
-  });
+    } else {
+      bcrypt.hash(password, 12).then((hashed_password) => {
+        const user = new User({
+          email,
+          password: hashed_password,
+          name,
+          username
+        });
 
-  bcrypt.hash(password, 12).then((hashed_password) => {
-    const user = new User({
-      email,
-      password: hashed_password,
-      name,
-      username
-    });
-
-    user
-      .save()
-      .then((user) => {
-        res.json({ message: 'Account created successfully' });
-      })
-      .catch((error) => {
-        console.log(error);
+        user
+          .save()
+          .then((user) => {
+            res.json({ message: 'Account created successfully' });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
       });
+    }
   });
 };
 
