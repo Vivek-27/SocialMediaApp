@@ -18,33 +18,39 @@ const Stories = () => {
     );
   };
   return (
-    <div className="Stories">
-      <div className="myStorie">
-        {myStorie ? (
-          <div className="st">
-            <div className="storie">
-              <img src={user.profile_img} alt="profile_pic" />
-            </div>
-            <span>Your story</span>
-          </div>
-        ) : (
-          <>
-            <div className="add">
-              <div className="profile_pic">
-                <img src={user.profile_img} alt="profile_pic" />
+    <>
+      {user ? (
+        <div className="Stories">
+          <div className="myStorie">
+            {myStorie ? (
+              <div className="st">
+                <div className="storie">
+                  <img src={user.profile_img} alt="profile_pic" />
+                </div>
+                <span>Your story</span>
               </div>
-              <div className="badge">+</div>
-            </div>
-            <span>Your story</span>
-          </>
-        )}
-      </div>
-      <div className="othersStories">
-        {data.map((item) => (
-          <Storie props={item.url} id={item.id} />
-        ))}
-      </div>
-    </div>
+            ) : (
+              <>
+                <div className="add">
+                  <div className="profile_pic">
+                    <img src={user.profile_img} alt="profile_pic" />
+                  </div>
+                  <div className="badge">+</div>
+                </div>
+                <span>Your story</span>
+              </>
+            )}
+          </div>
+          <div className="othersStories">
+            {data.map((item) => (
+              <Storie props={item.url} id={item.id} />
+            ))}
+          </div>
+        </div>
+      ) : (
+        ''
+      )}
+    </>
   );
 };
 

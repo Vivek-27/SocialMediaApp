@@ -10,7 +10,7 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
   const navigate = useNavigate();
-
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
 
   const Signin = () => {
@@ -18,7 +18,7 @@ const Login = () => {
       alert('Invert email');
       return;
     }
-
+    setLoading(true);
     fetch('/login', {
       method: 'POST',
       headers: {
@@ -38,6 +38,7 @@ const Login = () => {
           localStorage.setItem('user', JSON.stringify(data.user));
           dispatch({ type: 'LOGIN_USER', payload: data.user });
           dispatch({ type: 'AUTHORIZATION', payload: true });
+          setLoading(false);
           navigate('/');
         }
       })
@@ -51,6 +52,8 @@ const Login = () => {
       alert('Invert email');
       return;
     }
+
+    setLoading(true);
 
     fetch('/signup', {
       method: 'POST',
@@ -67,6 +70,7 @@ const Login = () => {
       .then((res) => res.json())
       .then((data) => {
         alert(data.message);
+        setLoading(false);
         window.location.reload();
       })
       .catch((err) => {
@@ -99,7 +103,10 @@ const Login = () => {
                 <input type="checkbox" className="checkbox" />
                 <span>Save login info</span>
               </div>
-              <button onClick={() => Signin()}>Log In</button>
+              <button onClick={() => Signin()}>
+                {loading ? <span className="loader"></span> : ''}
+                Log In
+              </button>
             </div>
 
             <div className="or">
@@ -213,6 +220,7 @@ const Login = () => {
                   <a href="">Cookies Policy</a>.
                 </span>
               </div>
+              {loading ? <span className="loader"></span> : ''}
               <button className="btn_signup" onClick={() => Signup()}>
                 Sign Up
               </button>
