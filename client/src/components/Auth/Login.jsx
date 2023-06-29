@@ -24,13 +24,12 @@ const Login = () => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
+      body: {
         email,
         password
-      })
+      }
     })
       .then((res) => {
-        res.text();
         console.log(res);
       })
       .then((data) => {
