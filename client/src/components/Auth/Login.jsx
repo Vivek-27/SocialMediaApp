@@ -29,8 +29,12 @@ const Login = () => {
         password
       })
     })
-      .then((res) => res.json())
+      .then((res) => {
+        res.text();
+        console.log(res);
+      })
       .then((data) => {
+        console.log(data);
         if (data.error) {
           console.log(data.error);
         } else {
