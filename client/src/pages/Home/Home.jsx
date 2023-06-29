@@ -14,7 +14,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const allPosts = async () => {
-    fetch('/all_posts', {
+    fetch('https://instagram-pjtu.onrender.com/all_posts', {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
@@ -29,7 +29,9 @@ const Home = () => {
 
   const det = async () => {
     try {
-      const response = await fetch(`/user/${user._id}`);
+      const response = await fetch(
+        `https://instagram-pjtu.onrender.com/user/${user._id}`
+      );
       const res = await response.json();
       localStorage.setItem('user', JSON.stringify(res.user));
       dispatch({ type: 'UPDATE_USER', payload: res });

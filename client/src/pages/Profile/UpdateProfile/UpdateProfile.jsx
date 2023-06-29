@@ -26,7 +26,7 @@ const UpdateProfile = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        fetch('/update_Profile', {
+        fetch('https://instagram-pjtu.onrender.com/update_Profile', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

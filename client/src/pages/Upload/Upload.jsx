@@ -25,7 +25,7 @@ const Upload = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        fetch('/create_post', {
+        fetch('https://instagram-pjtu.onrender.com/create_post', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
