@@ -4,7 +4,8 @@ import './stories.css';
 import { useSelector } from 'react-redux';
 
 const Stories = () => {
-  const userInfo = useSelector((state) => state.user.user);
+  const userLocal = localStorage.getItem('user');
+  const user = JSON.parse(userLocal);
   const [myStorie, setMyStorie] = useState('');
   const Storie = (props) => {
     return (
@@ -22,7 +23,7 @@ const Stories = () => {
         {myStorie ? (
           <div className="st">
             <div className="storie">
-              <img src={userInfo.profile_img} alt="profile_pic" />
+              <img src={user.profile_img} alt="profile_pic" />
             </div>
             <span>Your story</span>
           </div>
@@ -30,7 +31,7 @@ const Stories = () => {
           <>
             <div className="add">
               <div className="profile_pic">
-                <img src={userInfo.profile_img} alt="profile_pic" />
+                <img src={user.profile_img} alt="profile_pic" />
               </div>
               <div className="badge">+</div>
             </div>
