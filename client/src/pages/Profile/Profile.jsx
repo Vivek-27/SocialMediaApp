@@ -3,19 +3,22 @@ import ArrowBackIosNewRoundedIcon from '@mui/icons-material/ArrowBackIosNewRound
 import PersonAddRoundedIcon from '@mui/icons-material/PersonAddRounded';
 import { IoLockClosedOutline } from 'react-icons/io5';
 import './profile.css';
-import createIcon from './icons/6537820.png';
+import createIcon from '../../components/Footer/more.png';
 import gridIcon from './icons/frame-grid-icon.svg';
 import tagIcon from './icons/instagram-tag-icon.svg';
 import reelIcon from './icons/instagram-reels-icon.svg';
 import closeIcon from '../../components/Footer/close_FILL0_wght400_GRAD0_opsz48.svg';
 import UpdateProfile from './UpdateProfile/UpdateProfile';
 import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 
 const Profile = () => {
   const userLocal = localStorage.getItem('user');
   const user = JSON.parse(userLocal);
   const posts = useSelector((state) => state.user.post);
   const [editProfile, setEditProfile] = useState(false);
+  const [setting, setSetting] = useState(0);
+  const navigate = useNavigate();
 
   const Posts = () => {
     return (
@@ -29,6 +32,26 @@ const Profile = () => {
   const Header = () => {
     return (
       <>
+        {setting ? (
+          <>
+            <div className="settings">
+              <div className="top">
+                <button onClick={() => setSetting(0)}>Back</button>
+                <button
+                  onClick={() => {
+                    localStorage.clear();
+                    navigate('/');
+                    window.location.reload();
+                  }}
+                >
+                  Logout
+                </button>
+              </div>
+            </div>
+          </>
+        ) : (
+          ''
+        )}
         <div className="header">
           <p>
             <IoLockClosedOutline className="icon" /> {user.username}
@@ -36,7 +59,7 @@ const Profile = () => {
           </p>
           <div className="nav">
             <img src={createIcon} alt="" />
-            <div className="hamburger">
+            <div className="hamburger" onClick={() => setSetting((v) => !v)}>
               <div className="line"></div>
               <div className="line"></div>
               <div className="line"></div>

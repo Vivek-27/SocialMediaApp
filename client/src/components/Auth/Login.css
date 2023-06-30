@@ -16,7 +16,7 @@
   align-items: center;
   border: 1px solid rgba(207, 207, 207, 0.863);
   border-radius: 1px;
-  width: 350px;
+  width: 320px;
   height: max-content;
   padding-bottom: 20px;
 }
@@ -188,7 +188,7 @@
   border: 1px solid rgba(207, 207, 207, 0.863);
 
   border-radius: 1px;
-  width: 350px;
+  width: 320px;
   height: 60px;
 }
 

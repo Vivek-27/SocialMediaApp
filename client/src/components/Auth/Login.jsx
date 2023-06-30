@@ -31,7 +31,7 @@ const Login = () => {
         dispatch({ type: 'LOGIN_USER', payload: res.data.user });
         dispatch({ type: 'AUTHORIZATION', payload: true });
         setLoading(false);
-        navigate('/');
+        window.location.reload();
       })
       .catch((err) => {
         console.log(err);
@@ -59,11 +59,11 @@ const Login = () => {
       .then((data) => {
         alert(data.data.message);
         setLoading(false);
-        window.location.reload();
       })
       .catch((err) => {
         alert(err.response.data.error);
         setLoading(false);
+        navigate('/');
       });
   };
   return (
