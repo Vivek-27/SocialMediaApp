@@ -13,7 +13,7 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const allPosts = async () => {
-    await axios('/all_posts')
+    await axios('https://instagram-pjtu.onrender.com/all_posts')
       .then((data) => {
         setPosts(data.data.posts);
       })
@@ -22,10 +22,12 @@ const Home = () => {
 
   const det = async () => {
     try {
-      await axios.get(`/user/${user._id}`).then((data) => {
-        localStorage.setItem('user', JSON.stringify(data.data.user));
-        dispatch({ type: 'UPDATE_USER', payload: data.data.user });
-      });
+      await axios
+        .get(`https://instagram-pjtu.onrender.com/user/${user._id}`)
+        .then((data) => {
+          localStorage.setItem('user', JSON.stringify(data.data.user));
+          dispatch({ type: 'UPDATE_USER', payload: data.data.user });
+        });
     } catch (error) {
       console.log(error);
     }

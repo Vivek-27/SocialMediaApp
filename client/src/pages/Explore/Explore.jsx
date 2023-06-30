@@ -8,7 +8,7 @@ const Explore = () => {
   const [post, setPost] = useState();
 
   const allPosts = () => {
-    axios('/all_posts')
+    axios('https://instagram-pjtu.onrender.com/all_posts')
       .then((data) => {
         setPosts(data.data.posts);
       })
