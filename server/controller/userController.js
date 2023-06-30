@@ -50,6 +50,48 @@ const updateProfile = (req, res) => {
   });
 };
 
+const followUser = () => {
+  User.findById(
+    req.body.followUserId,
+    {
+      $push: { following: req.body.followUserId }
+    },
+    {
+      new: true
+    }
+  )
+    .select('-password')
+    .populate('followers', '_id name')
+    .populate('following', '_id name')
+    .then((result) => {
+      //   console.log(result);
+      res.json(result);
+      if (!result) {
+        return res.status(422).json({ error: err });
+      }
+    });
+
+  User.findByIdAndUpdate(
+    req.user._id,
+    {
+      $push: { following: req.body.followId }
+    },
+    {
+      new: true
+    }
+  )
+    .select('-password')
+    .populate('followers', '_id name')
+    .populate('following', '_id name')
+    .then((result) => {
+      //   console.log(result);
+      //   res.json(result);
+      if (!result) {
+        return res.status(422).json({ error: err });
+      }
+    });
+};
+
 module.exports = {
   getUser,
   updateProfile
