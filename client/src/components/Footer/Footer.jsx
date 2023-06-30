@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import './footer.css';
 import { Link } from 'react-router-dom';
-import reelsIcon from './instagram-reels-icon.svg';
+import reelsIcon from './reels.png';
 import reelsIconFilled from './icons8-instagram-reels.svg';
 import Upload from '../../pages/Upload/Upload';
 import closeIcon from './close_FILL0_wght400_GRAD0_opsz48.svg';
-
+import more from './more.png';
+import more2 from './addition.png';
 const Footer = () => {
   const userInfo = localStorage.getItem('user');
   const user = JSON.parse(userInfo);
@@ -83,17 +84,14 @@ const Footer = () => {
             onClick={() => {
               setCreatePost((v) => !v);
 
-              setUpload(1);
+              setUpload((v) => !v);
             }}
           >
-            <span
-              style={{
-                fontVariationSettings: `'FILL' ${upload}`
-              }}
-              class="material-symbols-rounded"
-            >
-              add_box
-            </span>
+            {!upload ? (
+              <img src={more} alt="" className="icon" />
+            ) : (
+              <img src={more2} alt="" className="icon" />
+            )}
           </Link>
         </div>
         <div className="reels">

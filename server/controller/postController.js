@@ -36,7 +36,7 @@ const like = async (req, res) => {
   PostImage.findByIdAndUpdate(
     req.body.post_id,
     {
-      $push: { likes: req.body.user._id }
+      $push: { likes: req.user.id }
     },
     {
       new: true
@@ -50,12 +50,11 @@ const like = async (req, res) => {
 };
 
 const unlike = async (req, res) => {
-  console.log(req);
   PostImage.findByIdAndUpdate(
     req.body.post_id,
 
     {
-      $pull: { likes: req.body.user._id }
+      $pull: { likes: req.user._id }
     },
     {
       new: true

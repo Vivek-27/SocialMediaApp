@@ -1,10 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './card.css';
-import commentIcon from './icons//instagram-comment-13416.svg';
-import shareIcon from './icons/instagram-share-13423.svg';
-import heartIcon from './icons/heart-3511.svg';
-import saveIcon from './icons/bookmark-ribbon-7787.svg';
+import commentIcon from './icons/comment.png';
+import shareIcon from './icons/send.png';
+import heartIcon from './icons/heart.png';
+import heartIconRed from './icons/heart_red.png';
+import saveIcon from './icons/bookmark.png';
 const Card = (props) => {
+  const user = localStorage.getItem('user');
+  const userId = JSON.parse(user);
+  const [liked, setLiked] = useState(0);
+
+  useEffect(() => {
+    props.props.likes.map((item) => {
+      if (item === userId._id) {
+        return setLiked(1);
+      }
+    });
+  }, []);
+
+  const like = async () => {
+    await fetch('https://instagram-pjtu.onrender.com/like', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('jwt')
+      },
+      body: JSON.stringify({
+        post_id: props.props._id
+      })
+    })
+      .then((res) => {
+        res.json();
+      })
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
+  };
+
+  const unlike = async () => {
+    await fetch('https://instagram-pjtu.onrender.com/unlike', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: 'Bearer ' + localStorage.getItem('jwt')
+      },
+      body: JSON.stringify({
+        post_id: props.props._id
+      })
+    })
+      .then((res) => res.json())
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="Card">
       <div className="top">
@@ -30,15 +76,35 @@ const Card = (props) => {
       </div>
       <div className="middle">
         <div className="lcs">
-          <img src={heartIcon} alt="" />
-          <img src={commentIcon} alt="" />
-          <img src={shareIcon} alt="" />
+          {!liked ? (
+            <img
+              style={{ cursor: 'pointer' }}
+              src={heartIcon}
+              alt=""
+              onClick={() => {
+                like();
+                setLiked(1);
+              }}
+            />
+          ) : (
+            <img
+              style={{ cursor: 'pointer' }}
+              src={heartIconRed}
+              alt=""
+              onClick={() => {
+                unlike();
+                setLiked(0);
+              }}
+            />
+          )}
+          <img style={{ cursor: 'pointer' }} src={commentIcon} alt="" />
+          <img style={{ cursor: 'pointer' }} src={shareIcon} alt="" />
         </div>
         <div className="save">
           <img src={saveIcon} alt="" />
         </div>
       </div>
-      <div className="likedby">{props.props.likes.length} likes</div>
+      <div className="likedby">{props.props.likes.length + liked} likes</div>
       <div className="bottom">
         <div className="desc">
           <span>{props.props.postedBy.name}</span>

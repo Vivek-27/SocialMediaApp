@@ -83,3 +83,19 @@
   border-radius: 50%;
   border: 1px solid rgba(128, 128, 128, 0.423);
 }
+
+.Footer .upload .icon {
+  width: 25px;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.Footer .upload img:hover {
+  opacity: 85%;
+  background-color: rgba(0, 0, 0, 0.126);
+}
+
+.Footer .upload img:active {
+  scale: 90%;
+  background-color: rgba(0, 0, 0, 0.185);
+}
