@@ -3,6 +3,33 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 0;
+}
+
+.card_explore {
+  width: 100%;
+  height: 95vh;
+  position: fixed;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  overflow: scroll;
+  background-color: #fff;
+}
+
+.card_explore .back {
+  padding: 7px 7px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+  z-index: 100;
+}
+.card_explore .back .iconBack {
+  font-size: 30px;
+  font-weight: 300;
+  width: 30px;
 }
 
 .Explore .top {
@@ -23,6 +50,7 @@
   background-color: #f2f2f2;
   border-radius: 12px;
   outline: none;
+  z-index: 1000;
 }
 
 .Explore .exp {
@@ -41,6 +69,7 @@
   object-fit: cover;
   aspect-ratio: 1/1;
   background-color: #fff;
+  cursor: pointer;
 }
 
 .Explore .exp img:hover {

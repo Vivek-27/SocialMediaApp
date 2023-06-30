@@ -32,4 +32,39 @@ const allPost = async (req, res) => {
     .catch((err) => console.log(err));
 };
 
-module.exports = { createPost, allPost };
+const like = async (req, res) => {
+  PostImage.findByIdAndUpdate(
+    req.body.post_id,
+    {
+      $push: { likes: req.body.user._id }
+    },
+    {
+      new: true
+    }
+  )
+    .populate('likes', '_id name')
+    .then((result) => {
+      res.json({ post: result });
+    })
+    .catch((err) => console.log(err));
+};
+
+const unlike = async (req, res) => {
+  console.log(req);
+  PostImage.findByIdAndUpdate(
+    req.body.post_id,
+
+    {
+      $pull: { likes: req.body.user._id }
+    },
+    {
+      new: true
+    }
+  )
+    .then((result) => {
+      res.json({ post: result });
+    })
+    .catch((err) => console.log(err));
+};
+
+module.exports = { createPost, allPost, like, unlike };

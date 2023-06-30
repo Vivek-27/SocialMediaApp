@@ -22,7 +22,7 @@ const Stories = () => {
       {user ? (
         <div className="Stories">
           <div className="myStorie">
-            {myStorie ? (
+            {!myStorie ? (
               <div className="st">
                 <div className="storie">
                   <img src={user.profile_img} alt="profile_pic" />

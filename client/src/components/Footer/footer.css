@@ -8,6 +8,8 @@
   background-color: #fff;
   border-top: 1px solid rgba(195, 195, 195, 0.412);
   height: 50px;
+  padding-bottom: 10px;
+  z-index: 5000;
 }
 
 .close {

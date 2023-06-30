@@ -21,7 +21,7 @@ const Login = () => {
     }
     setLoading(true);
     await axios
-      .post('https://instagram-pjtu.onrender.com/login', {
+      .post('/login', {
         email,
         password
       })
@@ -59,7 +59,7 @@ const Login = () => {
       .then((data) => {
         alert(data.data.message);
         setLoading(false);
-        // window.location.reload();
+        window.location.reload();
       })
       .catch((err) => {
         alert(err.response.data.error);

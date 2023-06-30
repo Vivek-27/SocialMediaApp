@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './footer.css';
 import { Link } from 'react-router-dom';
 import reelsIcon from './instagram-reels-icon.svg';
 import reelsIconFilled from './icons8-instagram-reels.svg';
 import Upload from '../../pages/Upload/Upload';
 import closeIcon from './close_FILL0_wght400_GRAD0_opsz48.svg';
-import { useSelector } from 'react-redux';
+
 const Footer = () => {
-  const userInfo = useSelector((state) => state.user.user);
+  const userInfo = localStorage.getItem('user');
+  const user = JSON.parse(userInfo);
   const [home, setHome] = useState(0);
   const [explore, setExplore] = useState(0);
   const [upload, setUpload] = useState(0);
   const [reel, setReel] = useState(reelsIcon);
   const [profile, setProfile] = useState(0);
   const [createPost, setCreatePost] = useState(false);
+
   return (
     <>
       {createPost ? (
@@ -121,15 +123,7 @@ const Footer = () => {
               setProfile(1);
             }}
           >
-            <img src={userInfo.profile_img} alt="" />
-            {/* <span
-              style={{
-                fontVariationSettings: `'FILL' ${profile}`
-              }}
-              class="material-symbols-rounded"
-            >
-              account_circle
-            </span> */}
+            <img src={user.profile_img} alt="" />
           </Link>
         </div>
       </div>{' '}

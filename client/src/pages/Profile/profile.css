@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 12px 0;
 }
 
 .Profile .header p {
@@ -54,6 +55,7 @@
   justify-content: center;
   text-align: center;
   gap: 30px;
+  padding-left: 30px;
 }
 
 .profile .top .info h2 {
@@ -156,13 +158,14 @@
 }
 
 .profile .pro_details {
-  padding: 2px 10px;
+  padding: 2px 15px;
   margin-bottom: 5px;
 }
 
 .profile .pro_details h3 {
   font-size: 14px;
   font-weight: 600;
+  padding: 2px 0;
 }
 
 .profile .pro_details p {

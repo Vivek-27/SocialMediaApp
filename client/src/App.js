@@ -5,8 +5,7 @@ import './App.css';
 import Footer from './components/Footer/Footer';
 import Profile from './pages/Profile/Profile';
 import Explore from './pages/Explore/Explore';
-import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const user = localStorage.getItem('user');
 

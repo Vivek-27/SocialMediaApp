@@ -76,7 +76,7 @@ const Profile = () => {
 
             <div className="info">
               <h2>
-                {posts.length} <p>Posts</p>
+                {posts ? posts.length : '0'} <p>Posts</p>
               </h2>
               <h2>
                 {user.followers.length} <p>Followers</p>
