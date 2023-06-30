@@ -31,7 +31,6 @@ const Login = () => {
         dispatch({ type: 'LOGIN_USER', payload: res.data.user });
         dispatch({ type: 'AUTHORIZATION', payload: true });
         setLoading(false);
-        navigate('/');
         window.location.reload();
       })
       .catch((err) => {
