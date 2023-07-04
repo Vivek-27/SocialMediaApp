@@ -29,9 +29,10 @@ const Login = () => {
         localStorage.setItem('jwt', res.data.token);
         localStorage.setItem('user', JSON.stringify(res.data.user));
         dispatch({ type: 'LOGIN_USER', payload: res.data.user });
-        dispatch({ type: 'AUTHORIZATION', payload: true });
+        dispatch({ type: 'AUTHORIZATION', payload: 'true' });
         setLoading(false);
-        window.location.reload();
+        navigate('/');
+        // window.location.reload();
       })
       .catch((err) => {
         console.log(err);

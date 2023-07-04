@@ -5,7 +5,8 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const initialState = {
   user: {},
   isAuthorized: false,
-  post: []
+  post: [],
+  like: 0
 };
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
@@ -25,6 +26,12 @@ const userReducer = (state = initialState, action) => {
         user: action.payload.user,
         post: action.payload.post
       };
+
+    case 'like': {
+      return {
+        like: action.payload
+      };
+    }
 
     default:
       return state;

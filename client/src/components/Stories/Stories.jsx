@@ -25,7 +25,11 @@ const Stories = () => {
             {!myStorie ? (
               <div className="st">
                 <div className="storie">
-                  <img src={user.profile_img} alt="profile_pic" />
+                  {user ? (
+                    <img src={user.profile_img} alt="profile_pic" />
+                  ) : (
+                    <img src={''} alt="profile_pic" />
+                  )}
                 </div>
                 <span>Your story</span>
               </div>
@@ -33,7 +37,11 @@ const Stories = () => {
               <>
                 <div className="add">
                   <div className="profile_pic">
-                    <img src={user.profile_img} alt="profile_pic" />
+                    {user ? (
+                      <img src={user.profile_img} alt="profile_pic" />
+                    ) : (
+                      <img src={''} alt="profile_pic" />
+                    )}
                   </div>
                   <div className="badge">+</div>
                 </div>

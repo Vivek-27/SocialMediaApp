@@ -11,6 +11,7 @@ import closeIcon from '../../components/Footer/close_FILL0_wght400_GRAD0_opsz48.
 import UpdateProfile from './UpdateProfile/UpdateProfile';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import Card from '../../components/Card/Card';
 
 const Profile = () => {
   const userLocal = localStorage.getItem('user');
@@ -20,11 +21,24 @@ const Profile = () => {
   const [setting, setSetting] = useState(0);
   const navigate = useNavigate();
 
+  const [post, setPost] = useState();
+
+  const handleClick = (item) => {
+    setPost(item);
+  };
+
+  console.log(posts);
+
   const Posts = () => {
     return (
       <div className="Post">
         {posts.map((item) => (
-          <img src={item.post_img} alt={item.id} id={item.id} />
+          <img
+            onClick={() => handleClick(item)}
+            src={item.post_img}
+            alt={item.id}
+            id={item.id}
+          />
         ))}
       </div>
     );
@@ -72,6 +86,22 @@ const Profile = () => {
 
   return (
     <>
+      {post ? (
+        <div className="card_explore">
+          <div className="back">
+            <span
+              className="material-symbols-outlined iconBack"
+              onClick={() => setPost(null)}
+            >
+              arrow_back
+            </span>
+            <h3>Explore</h3>
+          </div>
+          <Card props={post} />
+        </div>
+      ) : (
+        ''
+      )}
       <div className="Profile">
         {editProfile ? (
           <>
@@ -94,7 +124,11 @@ const Profile = () => {
         <div className="profile">
           <div className="top">
             <div className="div">
-              <img src={user.profile_img} alt="" className="profile_img" />
+              {user ? (
+                <img src={user.profile_img} alt="" className="profile_img" />
+              ) : (
+                <img src={''} alt="" className="profile_img" />
+              )}
             </div>
 
             <div className="info">

@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer';
 import Profile from './pages/Profile/Profile';
 import Explore from './pages/Explore/Explore';
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
 const user = localStorage.getItem('user');
 

@@ -7,7 +7,7 @@ const getUser = (req, res) => {
     .select('-password')
     .then((user) => {
       Post.find({ postedBy: req.params.id })
-        .populate('postedBy', '_id name')
+        .populate('postedBy', '_id name username profile_img')
         .then((post) => {
           return res.json({ user, post });
         });

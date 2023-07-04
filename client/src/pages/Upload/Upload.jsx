@@ -10,7 +10,6 @@ const Upload = () => {
   const [next, setNext] = useState(false);
   const [desc, setDesc] = useState();
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
   const selectFile = () => {
     selectfileRef.current.click();
   };

@@ -5,10 +5,18 @@ import shareIcon from './icons/send.png';
 import heartIcon from './icons/heart.png';
 import heartIconRed from './icons/heart_red.png';
 import saveIcon from './icons/bookmark.png';
+import { useDispatch, useSelector } from 'react-redux';
+import Profile from '../../pages/Profile/Profile';
 const Card = (props) => {
   const user = localStorage.getItem('user');
   const userId = JSON.parse(user);
   const [liked, setLiked] = useState(0);
+
+  const dispatch = useDispatch();
+  const likeval = useSelector((state) => state.user.like);
+  // const likeval = JSON.stringify(likev);
+
+  console.log(props);
 
   useEffect(() => {
     props.props.likes.map((item) => {
@@ -17,6 +25,10 @@ const Card = (props) => {
       }
     });
   }, []);
+
+  const viewProfile = () => {
+    return <Profile />;
+  };
 
   const like = async () => {
     await fetch('https://instagram-pjtu.onrender.com/like', {
@@ -32,7 +44,7 @@ const Card = (props) => {
       .then((res) => {
         res.json();
       })
-      .then((result) => console.log(result))
+      .then((result) => {})
       .catch((err) => console.log(err));
   };
 
@@ -48,7 +60,7 @@ const Card = (props) => {
       })
     })
       .then((res) => res.json())
-      .then((result) => console.log(result))
+      .then((result) => {})
       .catch((err) => console.log(err));
   };
   return (
@@ -62,7 +74,11 @@ const Card = (props) => {
               className="profile_pic"
             />
           </div>
-          <div className="profile_name">
+          <div
+            className="profile_name"
+            style={{ cursor: 'pointer' }}
+            onClick={() => viewProfile()}
+          >
             <p>{props.props.postedBy.name}</p>
             <span>{props.props.postedBy.username}</span>
           </div>
@@ -84,6 +100,7 @@ const Card = (props) => {
               onClick={() => {
                 like();
                 setLiked(1);
+                dispatch({ type: 'like', payload: 1 });
               }}
             />
           ) : (
@@ -93,6 +110,7 @@ const Card = (props) => {
               alt=""
               onClick={() => {
                 unlike();
+                dispatch({ type: 'like', payload: 0 });
                 setLiked(0);
               }}
             />
@@ -104,7 +122,14 @@ const Card = (props) => {
           <img src={saveIcon} alt="" />
         </div>
       </div>
-      <div className="likedby">{props.props.likes.length + liked} likes</div>
+      {likeval ? (
+        <div className="likedby">
+          {props.props.likes.length + likeval} likes
+        </div>
+      ) : (
+        <div className="likedby">{props.props.likes.length} likes</div>
+      )}
+
       <div className="bottom">
         <div className="desc">
           <span>{props.props.postedBy.name}</span>

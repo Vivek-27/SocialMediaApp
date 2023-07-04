@@ -26,7 +26,7 @@ const Home = () => {
         .get(`https://instagram-pjtu.onrender.com/user/${user._id}`)
         .then((data) => {
           localStorage.setItem('user', JSON.stringify(data.data.user));
-          dispatch({ type: 'UPDATE_USER', payload: data.data.user });
+          dispatch({ type: 'UPDATE_USER', payload: data.data });
         });
     } catch (error) {
       console.log(error);
