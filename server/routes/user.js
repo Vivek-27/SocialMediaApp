@@ -7,15 +7,25 @@ const {
   updateName,
   updateUserName,
   updateProfile,
-  followUser,
-  unFollowUser
+  withdrawlfollow,
+  follow,
+  getAllUsers,
+  followRequests,
+  acceptReq,
+  denyReq,
+  Friends
 } = require('../controller/userController');
 const requireLogin = require('../middleware/requireLogin.js');
 const router = express.Router();
 
 router.get('/user/:id', getUser);
 router.put('/update_Profile', requireLogin, updateProfile);
-router.put('/follow', requireLogin, followUser);
-router.put('/unfollow', requireLogin, unFollowUser);
+router.post('/follow', requireLogin, follow);
+router.post('/withdrawlfollow', requireLogin, withdrawlfollow);
+router.post('/acceptReq', requireLogin, acceptReq);
+router.post('/denyReq', requireLogin, denyReq);
+router.get('/followRequests', requireLogin, followRequests);
+router.get('/all-users', getAllUsers);
+router.get('/friends', requireLogin, Friends);
 
 module.exports = router;

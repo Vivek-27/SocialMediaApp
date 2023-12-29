@@ -1,4 +1,10 @@
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Route,
+  Routes,
+  useHref,
+  useNavigate
+} from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Login from './components/Auth/Login';
 import './App.css';
@@ -6,11 +12,15 @@ import Footer from './components/Footer/Footer';
 import Profile from './pages/Profile/Profile';
 import Explore from './pages/Explore/Explore';
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import Chat from './pages/Chat/Chat';
+import Notification from './pages/Notification/Notification';
+import MessageScreen from './pages/Chat/MessageScreen';
+import { Switch } from '@mui/material';
 
 const user = localStorage.getItem('user');
 
 const Routing = () => {
+  const user = localStorage.getItem('user');
   const navigate = useNavigate();
   useEffect(() => {
     if (user) {
@@ -19,12 +29,16 @@ const Routing = () => {
       navigate('/auth');
     }
   }, [user]);
+
   return (
     <Routes>
       <Route exact path="/" element={<Home />} />
       <Route path="/auth" element={<Login />} />
       <Route path="/profile" element={<Profile />} />
       <Route path="/explore" element={<Explore />} />
+      <Route path="/chat" element={<Chat />} />
+      <Route path="/message-screen/:id" element={<MessageScreen />} />
+      <Route path="/notification" element={<Notification />} />
     </Routes>
   );
 };
@@ -34,7 +48,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routing />
-        {user ? <Footer /> : ''}
+        {user && <Footer />}
       </BrowserRouter>
     </div>
   );

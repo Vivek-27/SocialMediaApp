@@ -31,6 +31,8 @@ const UserSchema = new mongoose.Schema({
     type: String,
     default: 'username'
   },
+  sentFriendRequests: [{ type: ObjectId, ref: 'User' }],
+  followRequests: [{ type: ObjectId, ref: 'User' }],
   followers: [{ type: ObjectId, ref: 'User' }],
   following: [{ type: ObjectId, ref: 'User' }]
 });

@@ -27,8 +27,6 @@ const Profile = () => {
     setPost(item);
   };
 
-  console.log(posts);
-
   const Posts = () => {
     return (
       <div className="Post">

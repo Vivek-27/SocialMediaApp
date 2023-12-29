@@ -16,8 +16,6 @@ const Card = (props) => {
   const likeval = useSelector((state) => state.user.like);
   // const likeval = JSON.stringify(likev);
 
-  console.log(props);
-
   useEffect(() => {
     props.props.likes.map((item) => {
       if (item === userId._id) {
@@ -27,7 +25,8 @@ const Card = (props) => {
   }, []);
 
   const viewProfile = () => {
-    return <Profile />;
+    console.log('click');
+    return <div className="profile">HElllo</div>;
   };
 
   const like = async () => {
@@ -74,13 +73,11 @@ const Card = (props) => {
               className="profile_pic"
             />
           </div>
-          <div
-            className="profile_name"
-            style={{ cursor: 'pointer' }}
-            onClick={() => viewProfile()}
-          >
-            <p>{props.props.postedBy.name}</p>
-            <span>{props.props.postedBy.username}</span>
+          <div className="profile_name" style={{ cursor: 'pointer' }}>
+            <p onClick={() => viewProfile()}>{props.props.postedBy.name}</p>
+            <span onClick={() => viewProfile()}>
+              {props.props.postedBy.username}
+            </span>
           </div>
         </div>
         <div className="right">

@@ -2,6 +2,14 @@ const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const Post = mongoose.model('PostImage');
 
+const getAllUsers = (req, res) => {
+  User.find()
+    .select('-password')
+    .then((users) => {
+      return res.status(200).json(users);
+    });
+};
+
 const getUser = (req, res) => {
   User.findOne({ _id: req.params.id })
     .select('-password')
@@ -50,93 +58,128 @@ const updateProfile = (req, res) => {
   });
 };
 
-const followUser = () => {
-  User.findById(
-    req.body.followUserId,
-    {
-      $push: { following: req.body.followUserId }
-    },
-    {
-      new: true
-    }
-  )
-    .select('-password')
-    .populate('followers', '_id name')
-    .populate('following', '_id name')
-    .then((result) => {
-      //   console.log(result);
-      res.json(result);
-      if (!result) {
-        return res.status(422).json({ error: err });
-      }
+const follow = async (req, res) => {
+  const { selectedUserId } = req.body;
+
+  try {
+    //update the recepient's friendRequestsArray!
+    await User.findByIdAndUpdate(selectedUserId, {
+      $push: { followRequests: req.user._id }
     });
 
-  User.findByIdAndUpdate(
-    req.user._id,
-    {
-      $push: { following: req.body.followId }
-    },
-    {
-      new: true
-    }
-  )
-    .select('-password')
-    .populate('followers', '_id name')
-    .populate('following', '_id name')
-    .then((result) => {
-      //   console.log(result);
-      //   res.json(result);
-      if (!result) {
-        return res.status(422).json({ error: err });
-      }
+    //update the sender's sentFriendRequset Array
+    await User.findByIdAndUpdate(req.user._id, {
+      $push: { sentFriendRequests: selectedUserId }
     });
+
+    res.status(200).json('Request Sent');
+  } catch (error) {
+    res.sendStatus(500);
+  }
 };
 
-const unFollowUser = () => {
-  User.findById(
-    req.body.followUserId,
-    {
-      $pull: { following: req.body.followUserId }
-    },
-    {
-      new: true
-    }
-  )
-    .select('-password')
-    .populate('followers', '_id name')
-    .populate('following', '_id name')
-    .then((result) => {
-      //   console.log(result);
-      res.json(result);
-      if (!result) {
-        return res.status(422).json({ error: err });
-      }
+const withdrawlfollow = async (req, res) => {
+  const { selectedUserId } = req.body;
+
+  try {
+    //update the recepient's friendRequestsArray!
+    await User.findByIdAndUpdate(selectedUserId, {
+      $pull: { followRequests: req.user._id }
     });
 
-  User.findByIdAndUpdate(
-    req.user._id,
-    {
-      $pull: { following: req.body.followId }
-    },
-    {
-      new: true
-    }
-  )
-    .select('-password')
-    .populate('followers', '_id name')
-    .populate('following', '_id name')
-    .then((result) => {
-      //   console.log(result);
-      //   res.json(result);
-      if (!result) {
-        return res.status(422).json({ error: err });
-      }
+    //update the sender's sentFriendRequset Array
+    await User.findByIdAndUpdate(req.user._id, {
+      $pull: { sentFriendRequests: selectedUserId }
     });
+
+    res.status(200).json('Request Sent Withdrawlled');
+  } catch (error) {
+    res.sendStatus(500);
+  }
+};
+
+const followRequests = async (req, res) => {
+  try {
+    const requested = await User.find(req.user._id)
+      .select('-password')
+      .populate('followRequests', '_id name username profile_img');
+    res.status(200).json(requested);
+  } catch (error) {
+    res.sendStatus(500);
+  }
+};
+
+const acceptReq = async (req, res) => {
+  const { selectedUserId } = req.body;
+
+  try {
+    await User.findByIdAndUpdate(selectedUserId, {
+      $push: { following: req.user._id }
+    });
+
+    await User.findByIdAndUpdate(req.user._id, {
+      $push: { followers: selectedUserId }
+    });
+
+    //update the recepient's friendRequestsArray!
+    await User.findByIdAndUpdate(selectedUserId, {
+      $pull: { sentFriendRequests: req.user._id }
+    });
+
+    //update the sender's sentFriendRequset Array
+    await User.findByIdAndUpdate(req.user._id, {
+      $pull: { followRequests: selectedUserId }
+    });
+
+    res.status(200).json('Request Accepted Successfully');
+  } catch (error) {
+    res.sendStatus(500);
+  }
+};
+
+const denyReq = async (req, res) => {
+  const { selectedUserId } = req.body;
+
+  try {
+    //update the recepient's friendRequestsArray!
+    await User.findByIdAndUpdate(selectedUserId, {
+      $pull: { sentFriendRequests: req.user._id }
+    });
+
+    //update the sender's sentFriendRequset Array
+    await User.findByIdAndUpdate(req.user._id, {
+      $pull: { followRequests: selectedUserId }
+    });
+
+    res.status(200).json('Request Accepted Successfully');
+  } catch (error) {
+    res.sendStatus(500);
+  }
+};
+
+const Friends = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id).populate(
+      'following',
+      '_id name username profile_img'
+    );
+
+    const Friends = user.following;
+    res.json(Friends);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: 'Internal Server Error' });
+  }
 };
 
 module.exports = {
   getUser,
   updateProfile,
-  followUser,
-  unFollowUser
+  follow,
+  acceptReq,
+  getAllUsers,
+  followRequests,
+  withdrawlfollow,
+  denyReq,
+  Friends
 };
