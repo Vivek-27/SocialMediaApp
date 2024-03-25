@@ -6,7 +6,7 @@
   align-items: center;
   /* justify-content: center; */
   padding-top: 12px;
-  background-color: rgb(251, 251, 251);
+  background-color: var(--backgroundColor);
   gap: 10px;
 }
 

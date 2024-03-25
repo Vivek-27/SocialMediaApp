@@ -5,6 +5,7 @@
   justify-content: center;
   position: relative;
   z-index: 0;
+  background-color: var(--backgroundColor);
 }
 
 .card_explore {

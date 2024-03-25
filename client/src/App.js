@@ -27,6 +27,7 @@ const Routing = () => {
       navigate('/');
     } else {
       navigate('/auth');
+      document.getElementById('footer').style.display = 'none';
     }
   }, [user]);
 
@@ -48,7 +49,7 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routing />
-        {user && <Footer />}
+        <Footer />
       </BrowserRouter>
     </div>
   );

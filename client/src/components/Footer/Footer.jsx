@@ -18,7 +18,7 @@ const Footer = () => {
   const [createPost, setCreatePost] = useState(false);
 
   return (
-    <>
+    <div id="footer" style={{ width: 'inherit' }}>
       {createPost ? (
         <div className="close">
           <img
@@ -121,11 +121,11 @@ const Footer = () => {
               setProfile(1);
             }}
           >
-            <img src={user.profile_img} alt="" />
+            <img src={user?.profile_img} alt="" />
           </Link>
         </div>
       </div>{' '}
-    </>
+    </div>
   );
 };
 

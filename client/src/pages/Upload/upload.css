@@ -1,5 +1,5 @@
 .Upload {
-  width: 100%;
+  width: inherit;
   height: 100vh;
   display: flex;
   align-items: center;

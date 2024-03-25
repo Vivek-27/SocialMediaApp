@@ -27,6 +27,10 @@ app.use(require('./routes/auth.js'));
 app.use(require('./routes/post.js'));
 app.use(require('./routes/user.js'));
 
+app.use('/check', (req, res) => {
+  res.render('<h1>Working fine!!!</h1>');
+});
+
 app.listen(PORT, () => {
   console.log('Server running on PORT ' + process.env.PORT);
 });

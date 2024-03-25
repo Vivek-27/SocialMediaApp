@@ -1,14 +1,8 @@
 .Card {
-  width: 100%;
+  width: inherit;
   position: static;
   /* width: max-content; */
   height: auto;
-}
-
-@media (min-width: 800px) {
-  .Card {
-    width: max-content;
-  }
 }
 
 .Card .top {

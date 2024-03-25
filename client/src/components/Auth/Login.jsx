@@ -32,6 +32,7 @@ const Login = () => {
         dispatch({ type: 'AUTHORIZATION', payload: 'true' });
         setLoading(false);
         navigate('/');
+        document.getElementById('footer').style.display = 'block';
         // window.location.reload();
       })
       .catch((err) => {
