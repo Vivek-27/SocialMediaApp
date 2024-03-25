@@ -9,7 +9,7 @@
 }
 
 .card_explore {
-  width: 100%;
+  width: inherit;
   height: 95vh;
   position: fixed;
   z-index: 5;

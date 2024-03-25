@@ -46,11 +46,13 @@ const Routing = () => {
 
 function App() {
   return (
-    <div className="App">
-      <BrowserRouter>
-        <Routing />
-        <Footer />
-      </BrowserRouter>
+    <div className="bg">
+      <div className="App">
+        <BrowserRouter>
+          <Routing />
+          <Footer />
+        </BrowserRouter>
+      </div>
     </div>
   );
 }

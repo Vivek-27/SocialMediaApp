@@ -1,5 +1,5 @@
 .UpdateProfile {
-  width: 100%;
+  width: inherit;
   height: 100vh;
   background-color: rgb(255, 255, 255);
   position: fixed;

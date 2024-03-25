@@ -11,7 +11,7 @@
     #dd00ff 85%
   );
 
-  --backgroundColor: #f2f2f2;
+  --backgroundColor: #ffffff;
 }
 
 * {
@@ -24,18 +24,19 @@
 
 .App {
   width: 100%;
+  height: 100%;
   background-color: var(--backgroundColor);
+}
+
+.bg {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 @media screen and (min-width: 620px) {
   .App {
-    width: 450px;
-  }
-  body {
-    display: flex;
-    align-items: center;
-    background-color: var(--backgroundColor);
-    justify-content: center;
+    width: 850px;
   }
 }
 
